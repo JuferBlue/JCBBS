@@ -1,0 +1,20 @@
+#配置服务器端口
+server:
+  port: 8080
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/jcbbs
+    username: root
+    password: 147258369
+  servlet:
+    multipart:
+      max-file-size: 10MB # 单个文件最大大小
+      max-request-size: 100MB # 单次请求最大大小
+
+
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #设置mybatis日志
+    map-underscore-to-camel-case: true # 开启驼峰命名自动映射
