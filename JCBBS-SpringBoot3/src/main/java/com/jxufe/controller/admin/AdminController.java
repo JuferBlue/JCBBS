@@ -68,10 +68,5 @@ public class AdminController {
         return Result.success(adminLoginVO);
     }
 
-    @GetMapping("/test")
-    @Operation(summary = "测试令牌")
-    public Result<String> test(){
-        log.info("通过令牌校验成功");
-        return Result.success("通过令牌校验成功");
-    }
+
 }

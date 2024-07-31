@@ -10,4 +10,5 @@ package com.jxufe.constant;
  */
 public class MessageConstant {
     public static final String Account_Not_Found = "账号不存在";
+    public static final String PASSWORD_ERROR = "密码错误";
 }

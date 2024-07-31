@@ -8,6 +8,7 @@ import lombok.extern.apachecommons.CommonsLog;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.DigestUtils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -40,5 +41,13 @@ public class adminTest {
         log.info(cla);
         log.info(cla.get("adminId"));
         log.info(cla.get("exp"));
+    }
+
+
+    @Test
+    public void testMd5(){
+        String password = "lyh030802";
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        System.out.println("加密密码是："+password);
     }
 }

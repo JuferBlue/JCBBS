@@ -1,6 +1,8 @@
 package com.jxufe.service.impl;
 
+import com.jxufe.constant.MessageConstant;
 import com.jxufe.exception.AccountNotFoundException;
+import com.jxufe.exception.PasswordErrorException;
 import com.jxufe.mapper.AdminMapper;
 import com.jxufe.pojo.dto.AdminLoginDTO;
 import com.jxufe.pojo.entity.Admin;
@@ -8,6 +10,7 @@ import com.jxufe.service.AdminService;
 import lombok.extern.apachecommons.CommonsLog;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 /**
  * @BelongsProject: JCBBS-SpringBoot3
@@ -32,7 +35,13 @@ public class AdminServiceImpl implements AdminService {
         //2.处理异常情况
         if(admin==null){
             //账号不存在
-            throw new AccountNotFoundException("账号不存在");
+            throw new AccountNotFoundException(MessageConstant.Account_Not_Found);
+        }
+        //密码加密比对
+        password = DigestUtils.md5DigestAsHex(password.getBytes());
+        log.info("加密后的密码："+password);
+        if(!password.equals(admin.getPassword())){
+            throw new PasswordErrorException(MessageConstant.PASSWORD_ERROR);
         }
 
         //3.返回实体对象
