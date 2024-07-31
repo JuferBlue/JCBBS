@@ -8,6 +8,10 @@ package com.jxufe.utils;
  * @Description: 用于生成jwt的工具类
  * @Version: 1.0
  */
+
+import lombok.extern.slf4j.Slf4j;
+
+
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.JwtBuilder;
 import io.jsonwebtoken.Jwts;
@@ -54,6 +58,7 @@ public class JwtUtil {
      * @return
      */
     public static Claims parseJWT(String secretKey, String token) {
+
         // 得到DefaultJwtParser
         Claims claims = Jwts.parser()
                 // 设置签名的秘钥

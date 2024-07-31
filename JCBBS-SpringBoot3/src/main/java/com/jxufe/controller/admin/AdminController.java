@@ -12,10 +12,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -54,7 +51,7 @@ public class AdminController {
 
         //登录成功后，生成jwt令牌
         Map<String, Object> claims = new HashMap<>();
-        claims.put(JwtClaimsConstant.ADMIN_ID, admin.getAccount());
+        claims.put(JwtClaimsConstant.ADMIN_ID, admin.getId());
         String token = JwtUtil.createJWT(
                 jwtProperties.getAdminSecretKey(),//密钥
                 jwtProperties.getAdminTtl(),//有效期
@@ -69,5 +66,12 @@ public class AdminController {
                 .build();
 
         return Result.success(adminLoginVO);
+    }
+
+    @GetMapping("/test")
+    @Operation(summary = "测试令牌")
+    public Result<String> test(){
+        log.info("通过令牌校验成功");
+        return Result.success("通过令牌校验成功");
     }
 }

@@ -22,7 +22,7 @@ mybatis:
 
 jwt:
   admin-secret-key: bluedadabludadabludadabludadabluedada # 管理员token加密秘钥
-  admin-expire-time: 3*3600*1000 # 管理员token过期时间
+  admin-ttl: 7200000 # 管理员token过期时间
   admin-token-name: token #前端传过来的令牌名
 
 # 以下两个是swagger配置
