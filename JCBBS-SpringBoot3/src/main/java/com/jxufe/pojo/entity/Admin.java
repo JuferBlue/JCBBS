@@ -5,6 +5,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
+
 /**
  * @BelongsProject: JCBBS-SpringBoot3
  * @BelongsPackage: com.jxufe.pojo.entity
@@ -17,7 +19,7 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class Admin {
+public class Admin implements Serializable {
     private Long id;
     private String account;
     private String password;

@@ -5,7 +5,7 @@ package com.jxufe.utils;
  * @BelongsPackage: com.jxufe.utils
  * @Author: JuferBlue
  * @CreateTime: 2024-07-31  00:14
- * @Description: TODO
+ * @Description: 用于生成jwt的工具类
  * @Version: 1.0
  */
 import io.jsonwebtoken.Claims;
